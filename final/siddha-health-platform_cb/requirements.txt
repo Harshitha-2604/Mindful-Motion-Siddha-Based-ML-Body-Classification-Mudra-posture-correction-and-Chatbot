@@ -1,0 +1,10 @@
+# requirements.txt
+
+Flask
+Flask-Cors
+pandas
+numpy
+scikit-learn
+opencv-python
+mediapipe
+joblib

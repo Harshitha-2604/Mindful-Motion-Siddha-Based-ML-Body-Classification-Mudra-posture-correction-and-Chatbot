@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="connect-src 'self' http://localhost:5000;">
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    <title>Mindful Motion</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <div id="landing-page">
+        <div class="landing-content">
+            <div class="logo">
+                <img src="assets/images/logo.png" alt="Mindful Motion Logo">
+            </div>
+            <h1>
+                <span class="serif">MINDFUL MOTION</span>
+            </h1>
+            <h2>
+                <span class="sans-serif">SIDDHA</span>
+            </h2>
+            <p class="tagline">Wellness In Your Fingertips</p>
+            <div class="separator"></div>
+            <button id="get-started-btn">
+                <span>Get Started</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15A2.5 2.5 0 0 1 9.5 22h-3A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2h3z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 2.5 2.5h3A2.5 2.5 0 0 0 20 19.5v-15A2.5 2.5 0 0 0 17.5 2h-3z"/><path d="M5 10h14"/><path d="M5 14h14"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <header id="main-header" style="display: none;">
+        <img src="assets/images/logo.png" alt="MINDFUL MOTION Logo" class="header-logo">
+        <h1>MINDFUL MOTION</h1>
+        <p>Ancient wisdom meets modern technology</p>
+    </header>
+    
+    <div class="container" id="main-content" style="display: none;">
+        <div class="intro">
+            <h2>Body Type Analysis</h2>
+            <p>Answer the following questions to discover your Siddha body type (dosha). This analysis will help us provide personalized health recommendations based on Siddha practices.</p>
+        </div>
+        
+        <div class="progress-container" id="progress-container">
+            <div class="progress-bar">
+                <div class="progress" id="progress-bar"></div>
+            </div>
+            <p id="progress-text">Question 1 of 17</p>
+        </div>
+        
+        <div id="questionnaire-container" class="questionnaire-container"></div>
+        
+        <div class="nav-buttons">
+            <button id="prev-btn" disabled>Previous</button>
+            <button id="next-btn">Next</button>
+            <button id="submit-btn" style="display: none;">Submit</button>
+        </div>
+        
+        <div id="results-container" style="display: none;">
+            <div class="body-type-result">
+                <h2>Your Body Type: <span id="body-type"></span></h2>
+                <p id="body-type-description"></p>
+            </div>
+            
+            <div class="recommendation-section">
+                <h2>Personalized Recommendations</h2>
+                <div class="recommendation-card">
+                    <h3>Diet Recommendations</h3>
+                    <div id="diet-recommendations"></div>
+                </div>
+                <div class="recommendation-card">
+                    <h3>Lifestyle Suggestions</h3>
+                    <div id="lifestyle-recommendations"></div>
+                </div>
+                <div class="recommendation-card">
+                    <h3>Exercise Recommendations</h3>
+                    <div id="exercise-recommendations"></div>
+                </div>
+            </div>
+
+            <div class="mudra-practice-section">
+                <h2>Practice Your Mudra</h2>
+                <p>Based on your results, try practicing a recommended mudra. Click "Start Camera" to get real-time feedback.</p>
+                <button id="start-mudra-btn">Start Camera</button>
+                
+                <div id="mudra-interface" style="display: none;">
+                    <div class="mudra-container">
+                        <div class="video-container">
+                            <video id="webcam" width="640" height="480" autoplay></video>
+                            <canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
+                        </div>
+                        <div class="mudra-results">
+                            <h3>Detection Results</h3>
+                            <p><strong>Mudra:</strong> <span id="mudra-name">...</span></p>
+                            <p><strong>Confidence:</strong> <span id="confidence">...</span></p>
+                            <p><strong>Posture Accuracy:</strong> <span id="posture-accuracy">...</span></p>
+                            <hr>
+                            <h4>Posture Feedback:</h4>
+                            <div id="posture-feedback"></div>
+                        </div>
+                    </div>
+                    <button id="stop-mudra-btn">Stop Camera</button>
+                </div>
+            </div>
+            <button id="restart-btn">Start Over</button>
+        </div>
+    </div>
+
+    <div id="chatbot-launcher" class="chatbot-launcher" style="display: none;">
+        <img src="assets/images/botavatar.png" alt="Chat" class="chat-icon">
+    </div>
+
+    <div id="chatbot-widget" class="chatbot-widget">
+        <div class="chatbot-header">
+            <h3 id="chatbot-widget-title">Your Guide</h3>
+            <button id="chatbot-close-btn">×</button>
+        </div>
+        <div id="chatbot-messages" class="chatbot-messages"></div>
+        <form id="chatbot-input-form" class="chatbot-input-form">
+            <input type="text" id="chatbot-input" placeholder="Type or click mic to speak..." autocomplete="off">
+            <!-- Voice buttons will be added here by chatbotVoice.js -->
+            <button type="submit" id="chatbot-send-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24px" height="24px"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </button>
+        </form>
+    </div>
+    
+    <!-- Include all scripts in the correct order -->
+    <script src="assets/js/models.js"></script>
+    <script src="assets/js/chatbotModel.js"></script>
+    <script src="assets/js/views.js"></script>
+    <script src="assets/js/chatbotView.js"></script>
+    <script src="assets/js/chatbotVoice.js"></script> <!-- NEW: Voice module -->
+    <script src="assets/js/controllers.js"></script>
+    <script src="assets/js/chatbotController.js"></script>
+    <script src="assets/js/mudraController.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Controller.init();
+            ChatbotView.init();
+            ChatbotController.init();
+            MudraController.init();
+
+            const landingPage = document.getElementById('landing-page');
+            const getStartedBtn = document.getElementById('get-started-btn');
+            const mainHeader = document.getElementById('main-header');
+            const mainContent = document.getElementById('main-content');
+
+            getStartedBtn.addEventListener('click', () => {
+                landingPage.classList.add('hidden');
+                mainHeader.style.display = 'block';
+                mainContent.style.display = 'block';
+
+                setTimeout(() => {
+                    mainHeader.style.opacity = '1';
+                    mainContent.style.opacity = '1';
+                }, 50); 
+            });
+        });
+    </script>
+</body>
+</html>
