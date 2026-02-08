@@ -8,10 +8,9 @@ A web application that combines ancient Siddha practices with modern technology 
 - Interactive questionnaire to determine Siddha body type (dosha)
 - ML-powered analysis to classify users into body types using MLP Classifier
 - Personalized recommendations for diet, lifestyle, and exercise
-
-### Future Stages
-- Stage 2: Mudra posture correction with real-time feedback
-- Stage 3: Interactive chatbot for health advice based on Siddha practices
+- 
+### Stage 2: Mudra posture correction with real-time feedback
+### Stage 3: Interactive chatbot for health advice based on Siddha practices
 
 ## Project Structure
 
