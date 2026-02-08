@@ -26,9 +26,3 @@ The project follows an MVC (Model-View-Controller) architecture for the frontend
 - Flask REST API that serves the trained ML model
 - Scikit-learn pipeline with MLP Classifier for body type prediction
 
-## Setup Instructions
-
-### 1. Install Backend Dependencies
-
-```bash
-pip install -r requirements.txt
